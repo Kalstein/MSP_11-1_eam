@@ -2,16 +2,16 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { useState } from 'react';
 import { db } from '../firebaseConfig';
 import { addDoc,collection,doc, updateDoc, where } from 'firebase/firestore';
-const Q1exex1 = (props) => {
+const Q1estimation = (props) => {
 
   const [answer,setAnswer]=useState("")
 
   const AddOnDB=async()=>{
     try{
       await addDoc(collection(db,'student'),{
-       Q1_A: answer,
+       Q1_estimation: answer,
       })
-      props.navigation.navigate("Q1confirmation")
+      props.navigation.navigate("Q2")
 
     }catch(error){
       console.log(error)
@@ -26,14 +26,10 @@ const Q1exex1 = (props) => {
       justifyContent:'center'
     }}>
 
-    
-    <Text style ={styles.text}>
-    Ok, your 
-equation is equivalent
-to 3.25 + 7.50p = 85.75
-Can you solve to find the value of p?
+    <Text style={styles.text}>
+    What do you think the problem is asking you to do?
     </Text>
-    <TextInput placeholder='답' style = {styles.textView} onChangeText={(answer)=>setAnswer(answer)}></TextInput>
+    <TextInput placeholder='평가' style = {styles.textView} onChangeText={(answer)=>setAnswer(answer)}></TextInput>
     <Button
       title="Next?"
       onPress={()=>{
@@ -44,22 +40,6 @@ Can you solve to find the value of p?
 }
 
 const styles = StyleSheet.create({
-    mainView: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    subView:{
-      backgroundColor:'orange',
-      marginBottom: 10
-    },
-    generator:{
-      backgroundColor:'Blue Violet',
-      padding:5,
-      alignItems:'center',
-      width:'100%'
-    },
     textView: {
       width: "95%",
       margin: 15,
@@ -69,10 +49,10 @@ const styles = StyleSheet.create({
     },
     text: {
       backgroundColor:'#ffaec8',
-      fontSize: 15,
+      fontSize: 16,
       fontWeight: "bold",
       marginBottom: 80,
     }
   });
 
-  export default Q1exex1;
+  export default Q1estimation;

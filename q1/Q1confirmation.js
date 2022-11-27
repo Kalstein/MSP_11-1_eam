@@ -7,7 +7,7 @@ const Q1confirmation = (props) => {
       justifyContent:'center'
     }}>
 
-      <Text>Ok! If you’re 
+      <Text style={styles.text}>Ok! If you’re 
 right, then Todd
 bought 11 pictures.</Text>
     <Button
@@ -18,5 +18,14 @@ bought 11 pictures.</Text>
     />
     </View>);
 }
+
+const styles = StyleSheet.create({
+  text: {
+    backgroundColor:'#ffaec8',
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 80,
+  }
+});
 
 export default Q1confirmation;

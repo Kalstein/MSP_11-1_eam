@@ -27,10 +27,8 @@ const Q1ex3 = (props) => {
       justifyContent:'center'
     }}>
 
-    <Text>
-    Subtract away from $85,75 until I get to O.
-    </Text>
-    <Text style ={styles.subView}>
+    
+    <Text style ={styles.text}>
     OK. Start with $85.50.
 Subtract the shipping fee, then count how many times you have to subtract
 $7.50 to get to 0.
@@ -68,6 +66,12 @@ const styles = StyleSheet.create({
       height: 40,
       borderColor: "#7a42f4",
       borderWidth: 1
+    },
+    text: {
+      backgroundColor:'#ffaec8',
+      fontSize: 15,
+      fontWeight: "bold",
+      marginBottom: 80,
     }
   });
 

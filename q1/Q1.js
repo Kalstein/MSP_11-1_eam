@@ -4,10 +4,11 @@ const Q1 = (props) => {
     return(
     <View style ={{
       flex:1,
+      backgroundColor: '#fff',
       alignItems:'center',
       justifyContent:'center'
     }}>
-      <Text>Todd orders pictures from a photographer. Each picture costs $7.50.
+      <Text style={styles.text}>Todd orders pictures from a photographer. Each picture costs $7.50.
 A one-time shipping fee of $3.25 is added to the cost of the order.
 The total cost of Todd’s order before tax is $85.75.
 
@@ -38,7 +39,7 @@ How many pictures did Todd order?</Text>
       <Button
         title="Next"
         onPress={()=>{
-            props.navigation.navigate("Q2")
+            props.navigation.navigate("Q1estimation")
         }} 
       />
     </View>);
@@ -52,14 +53,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   subView:{
-    backgroundColor:'orange',
-    marginBottom: 10
+    backgroundColor:'#ffb30e',
+    marginBottom: 50
   },
   generator:{
     backgroundColor:'Blue Violet',
     padding:5,
     alignItems:'center',
     width:'100%'
+  },
+  buttonView:{
+    height: 50,
+    Color: 'red',
+    marginTop: 20,
+    fontSize: 20,
+    width:45
+  },
+  text:{
+    backgroundColor:'#c4ff0e',
+    fontSize: 15,
+    fontWeight: "bold",
+    marginBottom: 80,
   }
 });
 

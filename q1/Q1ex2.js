@@ -26,10 +26,8 @@ const Q1ex2 = (props) => {
       justifyContent:'center'
     }}>
 
-    <Text>
-      Add on the shipping fee until I get to $85,75.
-    </Text>
-    <Text style ={styles.subView}>
+    
+    <Text style ={styles.text}>
       OK, let’s try that. Start from $3.25. How many times do you have to add $7.50 to get to $85.75?
     </Text>
     <TextInput placeholder='답' style = {styles.textView} onChangeText={(answer)=>setAnswer(answer)}></TextInput>
@@ -65,6 +63,12 @@ const styles = StyleSheet.create({
       height: 40,
       borderColor: "#7a42f4",
       borderWidth: 1
+    },
+    text: {
+      backgroundColor:'#ffaec8',
+      fontSize: 15,
+      fontWeight: "bold",
+      marginBottom: 80,
     }
   });
 

@@ -7,10 +7,8 @@ const Q1ex1 = (props) => {
       justifyContent:'center'
     }}>
 
-    <Text>
-      Write an equation to solve
-    </Text>
-    <Text style ={styles.subView}>
+    
+    <Text style ={styles.text}>
       OK. Using p to represent the number of pictures, write an equation that represents how p, $7.50 per picture, and the $3.25 shipping fee combine to make $85.75
     </Text>
     <TextInput style = {styles.textView}></TextInput>
@@ -46,6 +44,12 @@ const styles = StyleSheet.create({
       height: 40,
       borderColor: "#7a42f4",
       borderWidth: 1
+    },
+    text: {
+      backgroundColor:'#ffaec8',
+      fontSize: 15,
+      fontWeight: "bold",
+      marginBottom: 80,
     }
   });
 
