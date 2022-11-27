@@ -27,7 +27,7 @@ const Q2ex3 = (props) => {
     }}>
 
     
-    <Text style ={styles.subView}>
+    <Text style={styles.text}>
     Let’s subtract Jen’s miles from Monday through Friday from 22. 
     How many miles does Jen have left to run?
     </Text>
@@ -64,6 +64,12 @@ const styles = StyleSheet.create({
       height: 40,
       borderColor: "#7a42f4",
       borderWidth: 1
+    },
+    text:{
+      backgroundColor:'#ffaec8',
+      fontSize: 16,
+      fontWeight: "bold",
+      marginBottom: 80,
     }
   });
 

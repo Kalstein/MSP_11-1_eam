@@ -27,7 +27,7 @@ const Q2ex2ex1 = (props) => {
     }}>
 
     
-    <Text style ={styles.subView}>
+    <Text style={styles.text}>
     Your equation is equivalent to 16  1/8 + m = 22.
 Can you solve for m?
     </Text>
@@ -64,6 +64,12 @@ const styles = StyleSheet.create({
       height: 40,
       borderColor: "#7a42f4",
       borderWidth: 1
+    },
+    text:{
+      backgroundColor:'#ffaec8',
+      fontSize: 16,
+      fontWeight: "bold",
+      marginBottom: 80,
     }
   });
 

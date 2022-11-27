@@ -7,7 +7,7 @@ const Q2 = (props) => {
       alignItems:'center',
       justifyContent:'center'
     }}>
-      <Text>Jen wants to run a total of 22 miles in five days. 
+      <Text style={styles.text}>Jen wants to run a total of 22 miles in five days. 
         The table shows her log for the miles she ran on Monday, Tuesday, Wednesday, and Thursday. 
         How many miles must Jen run on Friday to reach her goal?
       </Text>
@@ -37,7 +37,7 @@ const Q2 = (props) => {
       <Button
         title="Next"
         onPress={()=>{
-            props.navigation.navigate("Q3")
+            props.navigation.navigate("Q2estimation")
         }} 
       />      
     </View>);
@@ -51,14 +51,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   subView:{
-    backgroundColor:'orange',
-    marginBottom: 10
+    backgroundColor:'#ffb30e',
+    marginBottom: 50
   },
   generator:{
     backgroundColor:'Blue Violet',
     padding:5,
     alignItems:'center',
     width:'100%'
+  },
+  text:{
+    backgroundColor:'#c4ff0e',
+    fontSize: 15,
+    fontWeight: "bold",
+    marginBottom: 80,
   }
 });
 

@@ -7,7 +7,7 @@ const Q2confirmation = (props) => {
       justifyContent:'center'
     }}>
 
-      <Text>Fantastic! You’ve found that Jen needs to run another 5 7/8 miles to reach her goal!.</Text>
+      <Text style={styles.text}>Fantastic! You’ve found that Jen needs to run another 5 7/8 miles to reach her goal!.</Text>
     <Button
       title="Next?"
       onPress={()=>{
@@ -16,5 +16,13 @@ const Q2confirmation = (props) => {
     />
     </View>);
 }
+const styles = StyleSheet.create({
+  text:{
+    backgroundColor:'#ffaec8',
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 80,
+  }
+});
 
 export default Q2confirmation;

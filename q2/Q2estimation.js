@@ -2,16 +2,16 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { useState } from 'react';
 import { db } from '../firebaseConfig';
 import { addDoc,collection,doc, updateDoc, where } from 'firebase/firestore';
-const Q2ex1ex1 = (props) => {
+const Q2estimation = (props) => {
 
   const [answer,setAnswer]=useState("")
 
   const AddOnDB=async()=>{
     try{
       await addDoc(collection(db,'student'),{
-       Q2_A: answer,
+       Q2_estimation: answer,
       })
-      props.navigation.navigate("Q2confirmation")
+      props.navigation.navigate("Q3")
 
     }catch(error){
       console.log(error)
@@ -26,11 +26,10 @@ const Q2ex1ex1 = (props) => {
       justifyContent:'center'
     }}>
 
-    
     <Text style={styles.text}>
-    OK, if she ran 16 1/8 miles, how many more does she have to run to reach 22 miles?
+    What do you think the problem is asking you to do?
     </Text>
-    <TextInput placeholder='답' style = {styles.textView} onChangeText={(answer)=>setAnswer(answer)}></TextInput>
+    <TextInput placeholder='평가' style = {styles.textView} onChangeText={(answer)=>setAnswer(answer)}></TextInput>
     <Button
       title="Next?"
       onPress={()=>{
@@ -41,22 +40,6 @@ const Q2ex1ex1 = (props) => {
 }
 
 const styles = StyleSheet.create({
-    mainView: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    subView:{
-      backgroundColor:'orange',
-      marginBottom: 10
-    },
-    generator:{
-      backgroundColor:'Blue Violet',
-      padding:5,
-      alignItems:'center',
-      width:'100%'
-    },
     textView: {
       width: "95%",
       margin: 15,
@@ -72,4 +55,4 @@ const styles = StyleSheet.create({
     }
   });
 
-  export default Q2ex1ex1;
+  export default Q2estimation;
