@@ -27,7 +27,7 @@ const Q3ex3ex2 = (props) => {
     }}>
 
     
-    <Text style ={styles.subView}>
+    <Text style ={styles.text}>
     Fantastic! Now let’s find how long each of those shorter rectangles are.
     </Text>
     <TextInput placeholder='답' style = {styles.textView} onChangeText={(answer)=>setAnswer(answer)}></TextInput>
@@ -63,6 +63,12 @@ const styles = StyleSheet.create({
       height: 40,
       borderColor: "#7a42f4",
       borderWidth: 1
+    },
+    text:{
+      backgroundColor:'#ffaec8',
+      fontSize: 16,
+      fontWeight: "bold",
+      marginBottom: 80,
     }
   });
 

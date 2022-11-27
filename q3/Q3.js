@@ -7,7 +7,7 @@ const Q3 = (props) => {
       alignItems:'center',
       justifyContent:'center'
     }}>
-      <Text>Jennifer has 84.5 yards of fabric to make curtains. 
+      <Text style={styles.text}>Jennifer has 84.5 yards of fabric to make curtains. 
         She makes 6 identical curtains and has 19.7 yards of fabric remaining. 
         How many yards of fabric does Jennifer use per curtain?
       </Text>
@@ -37,7 +37,7 @@ const Q3 = (props) => {
         <Button
         title="Next"
         onPress={()=>{
-            props.navigation.navigate("Q4")
+            props.navigation.navigate("Q3estimation")
         }} 
       />
     </View>);
@@ -51,14 +51,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   subView:{
-    backgroundColor:'orange',
-    marginBottom: 10
+    backgroundColor:'#ffb30e',
+    marginBottom: 50
   },
   generator:{
     backgroundColor:'Blue Violet',
     padding:5,
     alignItems:'center',
     width:'100%'
+  },
+  text:{
+    backgroundColor:'#c4ff0e',
+    fontSize: 15,
+    fontWeight: "bold",
+    marginBottom: 80,
   }
 });
 

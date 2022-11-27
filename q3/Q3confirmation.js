@@ -7,7 +7,7 @@ const Q3confirmation = (props) => {
       justifyContent:'center'
     }}>
 
-      <Text>Nice! Jennifer used 10.8 yards of fabric for each curtain. Let’s try a different method!</Text>
+      <Text style={styles.text}>Nice! Jennifer used 10.8 yards of fabric for each curtain. Let’s try a different method!</Text>
     <Button
       title="Next?"
       onPress={()=>{
@@ -16,5 +16,14 @@ const Q3confirmation = (props) => {
     />
     </View>);
 }
+
+const styles = StyleSheet.create({
+  text: {
+    backgroundColor:'#ffaec8',
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 80,
+  }
+});
 
 export default Q3confirmation;

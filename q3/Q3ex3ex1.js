@@ -8,7 +8,7 @@ const Q3ex3ex1 = (props) => {
     }}>
 
     
-    <Text style ={styles.subView}>
+    <Text style ={styles.text}>
     Great job! Can you find out how long all 6 of the shorter rectangles are combined?
     </Text>
     <TextInput style = {styles.textView}></TextInput>
@@ -44,6 +44,12 @@ const styles = StyleSheet.create({
       height: 40,
       borderColor: "#7a42f4",
       borderWidth: 1
+    },
+    text:{
+      backgroundColor:'#ffaec8',
+      fontSize: 16,
+      fontWeight: "bold",
+      marginBottom: 80,
     }
   });
 

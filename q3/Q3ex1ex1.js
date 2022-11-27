@@ -27,7 +27,7 @@ const Q3ex1ex1 = (props) => {
     }}>
 
     
-    <Text style ={styles.subView}>
+    <Text style ={styles.text}>
     Yes! So she used 64.8 yards of fabric for six curtains. Now, how much fabric did she use for one curtain?
     </Text>
     <TextInput placeholder='답' style = {styles.textView} onChangeText={(answer)=>setAnswer(answer)}></TextInput>
@@ -63,6 +63,12 @@ const styles = StyleSheet.create({
       height: 40,
       borderColor: "#7a42f4",
       borderWidth: 1
+    },
+    text:{
+      backgroundColor:'#ffaec8',
+      fontSize: 16,
+      fontWeight: "bold",
+      marginBottom: 80,
     }
   });
 
