@@ -1,14 +1,14 @@
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import {useState} from 'react';
-import Graph from './Graph';
 import Data from './Data';
-import { bodyDatas } from './Tables';
 import { Picker } from '@react-native-picker/picker';
+import { SingleValue, DoubleValue } from './Test'
 
 const Student = (props) => {
   const [name, setName] = useState(Data.bodyDatas[0][0]);
 
-  const datas = [Data.bodyDatas[serch(name)][bodyDatas[0].length - 1], Data.tails[Data.tails.length-1]]
+  const datas = [Data.bodyDatas[serch(name)][Data.bodyDatas[0].length - 1], Data.tails[Data.tails.length-1]]
+  const data1 = Data.bodyDatas[serch(name)].slice(1,Data.bodyDatas[0].length)
 
   let names = []
   for (let i = 0; i < Data.bodyDatas.length; i++){
@@ -19,23 +19,21 @@ const Student = (props) => {
   heada.push('전체평균')
 
   return (
-    <View>
-      <ScrollView>
-        <View style={styles.containor}>
-          <Text style={styles.textleft}>{Data.teacherInformation[0]}</Text>
-          <Text style={styles.textRight}>{name}</Text>
-        </View>
-        <Picker style={styles.Picker} onValueChange={(val, idx) => setName(val)}>
-        {
-          names.map((name, idx) => (
-            <Picker.Item key={idx} label={name} value={name} />
-          ))
-        } 
-        </Picker>
-        <Graph head={["합", "전체평균"]} data={datas}></Graph>
-        <Graph head={heada} data={Data.tails.slice(1,Data.tails.length)}></Graph>
-      </ScrollView>
-    </View>
+    <ScrollView>
+      <View style={styles.containor}>
+        <Text style={styles.textleft}>{Data.teacherInformation[0]}</Text>
+        <Text style={styles.textRight}>{name}</Text>
+      </View>
+      <Picker style={styles.Picker} onValueChange={(val, idx) => setName(val)}>
+      {
+        names.map((name, idx) => (
+          <Picker.Item key={idx} label={name} value={name} />
+        ))
+      } 
+      </Picker>
+      <SingleValue head={["합", "전체평균"]} data1={datas}></SingleValue>
+      <DoubleValue head={heada} data1={data1} data2={Data.tails.slice(1,Data.tails.length)}></DoubleValue>
+    </ScrollView>
   )
 }
 
@@ -69,7 +67,7 @@ const styles = StyleSheet.create({
     width:'30%',
     paddingTop: 20,
     marginLeft:20,
-    marginBottom:100,
+    marginBottom:20,
     alignItems: 'left',
     textAlignVertical:'center',
   },

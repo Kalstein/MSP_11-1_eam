@@ -1,12 +1,15 @@
 // 통계화면
 import Tables from "./Tables"
 import { ScrollView, View, StyleSheet, Text } from "react-native";
-import Graph from './Graph';
-import Data from './Data';
+import Data, {dataList} from './Data';
+import {SingleValue, DoubleValue} from './Test'
+import { readfromStudentDB, data } from "./FireBase";
 
 const Statistics = () => {
   const heada = (Data.heads.slice(1, Data.heads.length-1))
   heada.push('전체평균')
+
+  console.log(readfromStudentDB())
 
   return (
       <ScrollView>
@@ -15,7 +18,7 @@ const Statistics = () => {
             <Text style={styles.textRight}>{Data.teacherInformation[1]}</Text>
           </View>
           <Tables></Tables>
-          <Graph head={heada} data={Data.tails.slice(1,Data.tails.length)}></Graph>
+          <SingleValue head={heada} data1={Data.tails.slice(1,Data.tails.length)}></SingleValue>
       </ScrollView>
   )
 }
