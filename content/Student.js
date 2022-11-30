@@ -1,47 +1,50 @@
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import {useState} from 'react';
-import Data from './Data';
 import { Picker } from '@react-native-picker/picker';
-import { SingleValue, DoubleValue } from './Test'
+import { SingleValue, DoubleValue } from './Graph'
 
 const Student = (props) => {
-  const [name, setName] = useState(Data.bodyDatas[0][0]);
-
-  const datas = [Data.bodyDatas[serch(name)][Data.bodyDatas[0].length - 1], Data.tails[Data.tails.length-1]]
-  const data1 = Data.bodyDatas[serch(name)].slice(1,Data.bodyDatas[0].length)
-
-  let names = []
-  for (let i = 0; i < Data.bodyDatas.length; i++){
-    names.splice(i, 0, Data.bodyDatas[i][0])
-  }
-
-  const heada = (Data.heads.slice(1, Data.heads.length-1))
-  heada.push('전체평균')
-
-  return (
-    <ScrollView>
-      <View style={styles.containor}>
-        <Text style={styles.textleft}>{Data.teacherInformation[0]}</Text>
-        <Text style={styles.textRight}>{name}</Text>
-      </View>
-      <Picker style={styles.Picker} onValueChange={(val, idx) => setName(val)}>
-      {
-        names.map((name, idx) => (
-          <Picker.Item key={idx} label={name} value={name} />
-        ))
-      } 
-      </Picker>
-      <SingleValue head={["합", "전체평균"]} data1={datas}></SingleValue>
-      <DoubleValue head={heada} data1={data1} data2={Data.tails.slice(1,Data.tails.length)}></DoubleValue>
-    </ScrollView>
-  )
-}
-
-const serch = (name) => {
-  for (let i = 0; i < Data.bodyDatas.length; i++){
-    if(Data.bodyDatas[i][0] === name){
-      return i;
+  try{
+    const serch = (name) => {
+      for (let i = 0; i < props.body.length; i++){
+        if(props.body[i][0] === name){
+          return i;
+        }
+      }
     }
+    
+    const [name, setName] = useState(props.body[0][0]);
+
+    const datas = [props.body[serch(name)][props.body[0].length - 1], props.tail[props.tail.length-1]]
+    const data1 = props.body[serch(name)].slice(1,props.body[0].length)
+
+    let names = []
+    for (let i = 0; i < props.body.length; i++){
+      names.splice(i, 0, props.body[i][0])
+    }
+
+    const heada = (props.head.slice(1, props.head.length-1))
+    heada.push('전체평균')
+
+    return (
+      <ScrollView>
+        <View style={styles.containor}>
+          <Text style={styles.textleft}>{props.teacherClass}</Text>
+          <Text style={styles.textRight}>{name}</Text>
+        </View>
+        <Picker style={styles.Picker} onValueChange={(val, idx) => setName(val)}>
+        {
+          names.map((name, idx) => (
+            <Picker.Item key={idx} label={name} value={name} />
+          ))
+        } 
+        </Picker>
+        <SingleValue head={["합", "전체평균"]} data1={datas}></SingleValue>
+        <DoubleValue head={heada} data1={data1} data2={props.tail.slice(1,props.tail.length)}></DoubleValue>
+      </ScrollView>
+    )
+  } catch(error){
+    console.log(error)
   }
 }
 

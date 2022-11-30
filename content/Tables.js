@@ -1,29 +1,15 @@
 //https://velog.io/@dishate/React-native-Table-%EB%A7%8C%EB%93%A4%EA%B8%B0
 
-import { StyleSheet, View, ScrollView, Text } from 'react-native';
-import Data from './Data'
+import { StyleSheet, View, Text } from 'react-native';
 
-const heads = Data.heads
+const tablema = (props) => {
+    try{
+    const heads = props.head
+    const bodyDatas = props.bodyData
+    const tails = props.tail
 
-const bodyDatas = Data.bodyDatas
-
-const tails = Data.tails
-
-let sum;
-
-for (let i = 1; i < tails.length; i++){
-    sum = 0;
-
-    for (let j = 0; j < bodyDatas.length; j++){
-        sum += Number(bodyDatas[j][i]);
-    }
-
-    tails[i] = parseFloat((sum / bodyDatas.length).toFixed(2));
-}
-
-const tablema = () => {
     return (
-        <ScrollView style={styles.scrollView}>
+        <View style={styles.scrollView}>
             <View title="머리" style={[styles.row, styles.borderStyle, { backgroundColor: "#808080" }]}>
                 {heads.map((head, index) => (
                     <View key={index} style={[styles.rowItem, { flexGrow: 1 }]}>
@@ -51,8 +37,11 @@ const tablema = () => {
                     </View>
                 ))}
             </View>
-        </ScrollView>
+        </View>
     )
+                } catch (error){
+
+                }
 }
 
 const styles = StyleSheet.create({

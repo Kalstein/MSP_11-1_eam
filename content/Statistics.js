@@ -1,26 +1,55 @@
 // 통계화면
 import Tables from "./Tables"
-import { ScrollView, View, StyleSheet, Text } from "react-native";
-import Data, {dataList} from './Data';
-import {SingleValue, DoubleValue} from './Test'
-import { readfromStudentDB, data } from "./FireBase";
+import { ScrollView, View, StyleSheet, Text, Alert } from "react-native";
+import { SingleValue } from './Graph'
+import { readfromStudentDB} from './FireBase';
+import React, {useEffect} from 'react';
 
-const Statistics = () => {
-  const heada = (Data.heads.slice(1, Data.heads.length-1))
-  heada.push('전체평균')
+const Statistics = (props) => {
+  try{
+    const head = props.head
+    let body
+    const tail = props.tail
 
-  console.log(readfromStudentDB())
+    const heada = (head.slice(1, head.length-1))
+    heada.push('전체평균')
 
-  return (
+    useEffect(() => {
+      const data = props.teacherClass && readfromStudentDB(props.teacherClass)
+      data && data.then((arrays) => {
+        body = arrays
+        props.setBody(body);
+      })
+    }, [props.teacherClass]);
+
+    let sum
+
+    for (let i = 1; i < tail.length; i++){
+      sum = 0;
+      for (let j = 0; j < props.body.length; j++){
+        sum += Number(props.body[j][i]);
+      }
+
+      tail[i] = parseFloat((sum / props.body.length).toFixed(2));
+    }
+
+    if (props.body.length == 0) return Alert.alert("데이터가 없습니다.")
+
+    return (
       <ScrollView>
           <View style={styles.containor}>
-            <Text style={styles.textleft}>{Data.teacherInformation[0]}</Text>
-            <Text style={styles.textRight}>{Data.teacherInformation[1]}</Text>
+            <Text style={styles.textleft}>{props.teacherClass}</Text>
+            <Text style={styles.textRight}>{props.teacherName}</Text>
           </View>
-          <Tables></Tables>
-          <SingleValue head={heada} data1={Data.tails.slice(1,Data.tails.length)}></SingleValue>
+          <ScrollView >
+            <Tables head={head} bodyData={props.body} tail={tail}></Tables>
+          </ScrollView>
+          <SingleValue head={heada} data1={tail.slice(1,tail.length)}></SingleValue>
       </ScrollView>
-  )
+    )
+  } catch(error){
+    console.log(error)
+  }
 }
 
 const styles = StyleSheet.create({
@@ -48,3 +77,8 @@ const styles = StyleSheet.create({
   });
 
 export default Statistics;
+
+// const ttd = [
+//   ['홍길동', 3, 1, 2, 3, 0, 1, 0, 1, 9],
+//   ['주찬환', 2, 3, 1, 1, 0, 2, 0, 2, 8]
+// ]
