@@ -11,24 +11,26 @@ import { useNavigation } from '@react-navigation/native';
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
 
-const heads = ['이름', 'Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', '합']
-const tails = ['평균', "", "", "", "", "", "", "", "", ""]
+const heads = ['Name', 'Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Sum']
+const tails = ['Aver', "", "", "", "", "", "", "", "", ""]
 
-const TabNavigation = (props) => (
+// 탭 네비게이션 함수
+const MyTabNavigation = (props) => (
   <Tab.Navigator
     initialRouteName='Main'
-    tabBarOptions={{
-      activeBackgroundColor:'skyblue',
+    screenOptions={{
+      tabBarLabelPosition: "beside-icon",
+      tabBarIconStyle: { display: "none" },
       activeTintColor:'blue',
-      inactiveBackgroundColor:'yellow',
+      showIcon:"false",
     }}
   >
     <Tab.Screen name="Main" children={() => 
       <Statistics head = {heads} body = {props.body} setBody = {props.setBody} tail = {tails} 
-        teacherClass={props.teacherClass} setTeacherClass={props.setTeacherClass}
-        teacherName={props.TeacherName} setTeacherName={props.setTeacherName}/>}/>
-    <Tab.Screen name="Student" children={() => <Student head = {heads} body = {props.body} tail = {tails} 
-      teacherClass={props.teacherClass} teacherName={props.TeacherName}/>}/>
+        teacherClass={props.teacherClass} teacherName={props.teacherName}/>}/>
+    <Tab.Screen name="Student" children={() => 
+      <Student head = {heads} body = {props.body} tail = {tails} 
+        teacherClass={props.teacherClass} teacherName={props.TeacherName}/>}/>
   </Tab.Navigator>
 )
 
@@ -39,13 +41,13 @@ export default function App() {
 
   return (
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Login">
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name="Login" >
             {() => <Log_in_teacher setTeacherClass={setTeacherClass} setTeacherName={setTeacherName} navigation={useNavigation()}/>}
           </Stack.Screen>
           <Stack.Screen name="Administer" component={Administer}/>
-          <Stack.Screen name="Tab">
-            {() => <TabNavigation body = {body} setBody={setBody} teacherClass = {teacherClass} teacherName = {teacherName}/>}
+          <Stack.Screen name="Home">
+            {() => <MyTabNavigation body = {body} setBody={setBody} teacherClass = {teacherClass} teacherName = {teacherName} navigation={useNavigation()}/>}
           </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>

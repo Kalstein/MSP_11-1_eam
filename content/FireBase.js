@@ -1,6 +1,7 @@
 import { db }  from '../firebaseConfig';
 import { collection, getDocs, query, where} from "firebase/firestore";
 
+// 전달받은 값이 "O"일때 1씩 더하여 반환하는 함수
 const add = (a, b, c) => {
     let sum = 0
 
@@ -17,6 +18,7 @@ const add = (a, b, c) => {
     return sum
 }
 
+// 학급 번호를 전달받아 해당 학급의 학생 정보를 파이어베이스로 부터 받아와 형식에 맞춰 반환하는 함수
 export const readfromStudentDB = async (classNumber)=>{
     try{
         const q = query(collection(db, "student"), where("addClass", "==", classNumber));
@@ -46,12 +48,3 @@ export const readfromStudentDB = async (classNumber)=>{
         console.log(error.message)
     }
 }
-
-/*
-addKey addName 
-addQ1_0 addQ1_A addQ1_B addQ1_C addQ2_0 addQ2_A addQ2_B addQ2_C 
-addQ3_0 addQ3_A addQ3_B addQ3_C addQ4_0 addQ4_A addQ4_B addQ4_C 
-addQ5_0 addQ5_A addQ5_B addQ5_C addQ6_0 addQ6_A addQ6_B addQ6_C 
-addQ7_0 addQ7_A addQ7_B addQ7_C addQ8_0 addQ8_A addQ8_B addQ8_C
-addScore
-*/
